@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${displayFont.variable} ${bodyFont.variable} ${numberFont.variable}`}
     >
       <head>
-        <meta name="base:app_id" content="69c22f7b3c2c56b9bbd2f616" />
+        <meta name="base:app_id" content="69c9f07354fba99e37410fe5" />
         <meta
           name="talentapp:project_verification"
           content="f1ea6957fcb813f8d96e24f26d5863d816539fc6b3120542739bea26fbd39bed2ecc3d888060177383a4f00fbd05225e9e13ab4f7cb7a1e90134290c1c4f3a82"
