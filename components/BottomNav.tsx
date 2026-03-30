@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { href: "/", label: "Home", icon: "?" },
-  { href: "/guess", label: "Guess", icon: "?" },
-  { href: "/me", label: "My Guess", icon: "◎" },
-  { href: "/history", label: "History", icon: "?" }
+  { href: "/", label: "Home", icon: "HM" },
+  { href: "/guess", label: "Guess", icon: "GO" },
+  { href: "/me", label: "My Guess", icon: "ME" },
+  { href: "/history", label: "History", icon: "HI" }
 ];
 
 export function BottomNav() {

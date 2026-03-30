@@ -5,7 +5,7 @@ import { useAccount, useReadContract, useWaitForTransactionReceipt, useWriteCont
 import { numberGuessAbi, numberGuessAddress } from "@/lib/contracts/numberGuess";
 import { mockGuessRecords } from "@/lib/mock";
 import type { GuessRecord } from "@/lib/types";
-import { BASE_APP_ID, BASE_BUILDER_CODE, BASE_BUILDER_DATA_SUFFIX } from "@/lib/wagmi";
+import { BASE_APP_ID, BASE_BUILDER_CODE, BASE_BUILDER_DATA_SUFFIX } from "@/lib/base-app";
 import { trackTransaction } from "@/utils/track";
 
 function toRecord(args: {
@@ -126,3 +126,4 @@ export function useSubmitGuess({ onSuccess }: { onSuccess?: () => Promise<void> 
     builderCode: BASE_BUILDER_CODE
   };
 }
+

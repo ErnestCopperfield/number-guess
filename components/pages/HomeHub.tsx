@@ -24,7 +24,7 @@ export function HomeHub() {
 
         <div className="quick-launch">
           <Link href="/guess" className="hub-card hub-card-primary">
-            <div className="card-icon">?</div>
+            <div className="card-icon">GO</div>
             <div>
               <p className="card-label">Start guessing</p>
               <p className="card-caption">Open the control pad</p>
@@ -32,7 +32,7 @@ export function HomeHub() {
           </Link>
 
           <Link href="/me" className="hub-card hub-card-secondary">
-            <div className="card-icon">◎</div>
+            <div className="card-icon">ME</div>
             <div>
               <p className="card-label">View my guess</p>
               <p className="card-caption">Check your latest number</p>
@@ -43,7 +43,9 @@ export function HomeHub() {
         <div className="status-strip" style={{ marginTop: 16 }}>
           <div>
             <strong>{guessCount}</strong>
-            <div className="record-meta"><span>Total personal guesses</span></div>
+            <div className="record-meta">
+              <span>Total personal guesses</span>
+            </div>
           </div>
           <div className="chip-row">
             <GuessStatusChip type="ready" />
