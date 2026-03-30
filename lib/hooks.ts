@@ -5,6 +5,7 @@ import { useAccount, useReadContract, useWaitForTransactionReceipt, useWriteCont
 import { numberGuessAbi, numberGuessAddress } from "@/lib/contracts/numberGuess";
 import { mockGuessRecords } from "@/lib/mock";
 import type { GuessRecord } from "@/lib/types";
+import { BASE_APP_ID, BASE_BUILDER_CODE, BASE_BUILDER_DATA_SUFFIX } from "@/lib/wagmi";
 import { trackTransaction } from "@/utils/track";
 
 function toRecord(args: {
@@ -96,7 +97,7 @@ export function useSubmitGuess({ onSuccess }: { onSuccess?: () => Promise<void> 
     if (trackedHashRef.current === writeContract.data) return;
 
     trackedHashRef.current = writeContract.data;
-    void trackTransaction("app-001", "number-guess", address, writeContract.data);
+    void trackTransaction(BASE_APP_ID, "number-guess", address, writeContract.data);
   }, [address, receipt.isSuccess, writeContract.data]);
 
   useEffect(() => {
@@ -112,7 +113,8 @@ export function useSubmitGuess({ onSuccess }: { onSuccess?: () => Promise<void> 
       abi: numberGuessAbi,
       address: numberGuessAddress,
       functionName: "guess",
-      args: [BigInt(value)]
+      args: [BigInt(value)],
+      dataSuffix: BASE_BUILDER_DATA_SUFFIX
     });
   };
 
@@ -120,6 +122,7 @@ export function useSubmitGuess({ onSuccess }: { onSuccess?: () => Promise<void> 
     submit,
     isLoading: writeContract.isPending || receipt.isLoading,
     isSuccess: receipt.isSuccess,
-    hash: writeContract.data
+    hash: writeContract.data,
+    builderCode: BASE_BUILDER_CODE
   };
 }
