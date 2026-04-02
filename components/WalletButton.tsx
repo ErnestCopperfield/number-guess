@@ -16,7 +16,7 @@ function trimAddress(value?: string) {
 
 export function WalletButton() {
   const { address, isConnected } = useAccount();
-  const { connect, connectors, isPending } = useConnect();
+  const { connectAsync, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
 
   const walletOptions = useMemo<WalletOption[]>(() => {
@@ -27,12 +27,18 @@ export function WalletButton() {
     ];
   }, []);
 
-  const handleConnect = (connectorIds: string[]) => {
-    const connector = connectorIds
-      .map((id) => connectors.find((item) => item.id === id))
-      .find(Boolean);
+  const handleConnect = async (connectorIds: string[]) => {
+    for (const connectorId of connectorIds) {
+      const connector = connectors.find((item) => item.id === connectorId);
+      if (!connector) continue;
 
-    if (connector) connect({ connector });
+      try {
+        await connectAsync({ connector });
+        return;
+      } catch {
+        // Try the next connector option for this wallet group.
+      }
+    }
   };
 
   if (isConnected) {
@@ -46,20 +52,16 @@ export function WalletButton() {
 
   return (
     <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
-      {walletOptions.map((option) => {
-        const available = option.connectorIds.some((id) => connectors.some((item) => item.id === id));
-
-        return (
-          <button
-            key={option.id}
-            className="wallet-button"
-            onClick={() => handleConnect(option.connectorIds)}
-            disabled={!available || isPending}
-          >
-            <span>{isPending ? "Connecting..." : option.label}</span>
-          </button>
-        );
-      })}
+      {walletOptions.map((option) => (
+        <button
+          key={option.id}
+          className="wallet-button"
+          onClick={() => void handleConnect(option.connectorIds)}
+          disabled={isPending}
+        >
+          <span>{isPending ? "Connecting..." : option.label}</span>
+        </button>
+      ))}
     </div>
   );
 }
