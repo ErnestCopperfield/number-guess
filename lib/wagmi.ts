@@ -7,6 +7,7 @@ import { okxConnector } from "@/lib/connectors/okx";
 export const wagmiConfig = createConfig({
   chains: [base],
   connectors: [
+    injected({ target: "okxWallet", shimDisconnect: false }),
     okxConnector(),
     injected(),
     baseAccount({

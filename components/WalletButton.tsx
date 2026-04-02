@@ -6,7 +6,7 @@ import { useAccount, useConnect, useDisconnect } from "wagmi";
 type WalletOption = {
   id: string;
   label: string;
-  connectorId: string;
+  connectorIds: string[];
 };
 
 function trimAddress(value?: string) {
@@ -20,21 +20,20 @@ export function WalletButton() {
   const { disconnect } = useDisconnect();
 
   const walletOptions = useMemo<WalletOption[]>(() => {
-    return connectors
-      .map((connector) => {
-        if (connector.id === "okxUniversal") {
-          return { id: "okx", label: "OKX Wallet", connectorId: connector.id };
-        }
-        if (connector.id === "baseAccount") {
-          return { id: "base", label: "Base Account", connectorId: connector.id };
-        }
-        if (connector.id === "injected") {
-          return { id: "browser", label: "Browser Wallet", connectorId: connector.id };
-        }
-        return null;
-      })
-      .filter((option): option is WalletOption => Boolean(option));
-  }, [connectors]);
+    return [
+      { id: "okx", label: "OKX Wallet", connectorIds: ["okxWallet", "okxUniversal"] },
+      { id: "base", label: "Base Account", connectorIds: ["baseAccount"] },
+      { id: "browser", label: "Browser Wallet", connectorIds: ["injected"] }
+    ];
+  }, []);
+
+  const handleConnect = (connectorIds: string[]) => {
+    const connector = connectorIds
+      .map((id) => connectors.find((item) => item.id === id))
+      .find(Boolean);
+
+    if (connector) connect({ connector });
+  };
 
   if (isConnected) {
     return (
@@ -48,13 +47,14 @@ export function WalletButton() {
   return (
     <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
       {walletOptions.map((option) => {
-        const connector = connectors.find((item) => item.id === option.connectorId);
+        const available = option.connectorIds.some((id) => connectors.some((item) => item.id === id));
+
         return (
           <button
             key={option.id}
             className="wallet-button"
-            onClick={() => connector && connect({ connector })}
-            disabled={!connector || isPending}
+            onClick={() => handleConnect(option.connectorIds)}
+            disabled={!available || isPending}
           >
             <span>{isPending ? "Connecting..." : option.label}</span>
           </button>
