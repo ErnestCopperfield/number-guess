@@ -6,6 +6,7 @@ import { APP_NAME } from "@/lib/site";
 export const wagmiConfig = createConfig({
   chains: [base],
   connectors: [
+    injected({ target: "okxWallet" }),
     injected(),
     baseAccount({
       appName: APP_NAME
