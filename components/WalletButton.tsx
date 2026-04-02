@@ -1,67 +1,45 @@
 "use client";
 
-import { useMemo } from "react";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
-type WalletOption = {
-  id: string;
-  label: string;
-  connectorIds: string[];
-};
+function shortAddress(address: string) {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+}
 
-function trimAddress(value?: string) {
-  if (!value) return "Connect Wallet";
-  return `${value.slice(0, 6)}...${value.slice(-4)}`;
+function getConnectorLabel(name: string) {
+  if (name === "Injected") return "Connect Browser Wallet";
+  return `Connect ${name}`;
 }
 
 export function WalletButton() {
   const { address, isConnected } = useAccount();
-  const { connectAsync, connectors, isPending } = useConnect();
+  const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
 
-  const walletOptions = useMemo<WalletOption[]>(() => {
-    return [
-      { id: "okx", label: "OKX Wallet", connectorIds: ["okxWallet", "okxUniversal"] },
-      { id: "base", label: "Base Account", connectorIds: ["baseAccount"] },
-      { id: "browser", label: "Browser Wallet", connectorIds: ["injected"] }
-    ];
-  }, []);
-
-  const handleConnect = async (connectorIds: string[]) => {
-    for (const connectorId of connectorIds) {
-      const connector = connectors.find((item) => item.id === connectorId);
-      if (!connector) continue;
-
-      try {
-        await connectAsync({ connector });
-        return;
-      } catch {
-        // Try the next connector option for this wallet group.
-      }
-    }
-  };
-
-  if (isConnected) {
+  if (isConnected && address) {
     return (
-      <button className="wallet-button connected" onClick={() => disconnect()}>
-        <span className="wallet-dot" />
-        <span>{trimAddress(address)}</span>
-      </button>
+      <section style={{ display: "grid", gap: 8, justifyItems: "end" }}>
+        <button type="button" className="wallet-button connected" onClick={() => disconnect()}>
+          <span className="wallet-dot" />
+          <span>{shortAddress(address)}</span>
+        </button>
+      </section>
     );
   }
 
   return (
-    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
-      {walletOptions.map((option) => (
+    <section style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
+      {connectors.map((connector) => (
         <button
-          key={option.id}
+          key={connector.uid}
+          type="button"
           className="wallet-button"
-          onClick={() => void handleConnect(option.connectorIds)}
           disabled={isPending}
+          onClick={() => connect({ connector })}
         >
-          <span>{isPending ? "Connecting..." : option.label}</span>
+          {isPending ? "Connecting..." : getConnectorLabel(connector.name)}
         </button>
       ))}
-    </div>
+    </section>
   );
 }
