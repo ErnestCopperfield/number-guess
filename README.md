@@ -43,3 +43,9 @@ git clone https://github.com/ErnestCopperfield/number-guess.git
 ```
 
 ### 2. Enter the Project Directory
+
+```bash
+cd number-guess
+```
+
+### 3. Review the Project Files
