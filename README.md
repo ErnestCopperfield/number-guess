@@ -29,3 +29,11 @@ This README provides a clean starting point for understanding, setting up, and w
 ## Repository
 
 Repository URL:
+
+https://github.com/ErnestCopperfield/number-guess.git
+
+## Getting Started
+
+Follow the steps below to get a local copy of the project.
+
+### 1. Clone the Repository
