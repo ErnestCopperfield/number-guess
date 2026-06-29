@@ -75,3 +75,9 @@ As the project grows, consider adding:
 - Exact run commands.
 - Screenshots or sample output.
 - Game rules.
+- Known limitations.
+- Testing instructions.
+
+## Possible Game Rules
+
+A basic version of the game may follow these rules:
