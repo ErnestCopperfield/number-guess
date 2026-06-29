@@ -101,3 +101,9 @@ Document any behavior that may not be obvious from the code.
 If the project gains dependencies, include setup instructions in this README.
 
 If the project gains tests, include commands for running them.
+
+## Contributing
+
+Contributions can be made by improving the code, documentation, or project structure.
+
+Before making changes, review the existing files and keep the project style consistent.
