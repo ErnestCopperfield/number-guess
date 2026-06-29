@@ -49,3 +49,9 @@ cd number-guess
 ```
 
 ### 3. Review the Project Files
+
+After cloning the repository, inspect the files in the project directory to determine how the project is organized.
+
+Depending on the implementation, you may find source files, configuration files, or supporting documentation.
+
+## Usage
