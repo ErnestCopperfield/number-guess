@@ -62,3 +62,10 @@ For example:
 
 - If the project includes a script file, run it with the appropriate runtime.
 - If the project includes a web page, open the main HTML file in a browser.
+- If the project includes build or dependency files, install dependencies before running it.
+
+If additional run instructions are added to the repository later, place them in this section.
+
+## Suggested README Updates
+
+As the project grows, consider adding:
