@@ -17,3 +17,10 @@ This README provides a clean starting point for understanding, setting up, and w
 - Keep the project easy to understand.
 - Provide a simple guessing-game structure.
 - Make the repository approachable for learning and experimentation.
+- Offer a clear place for future improvements and documentation.
+
+## Features
+
+- Number-guessing project structure.
+- Simple concept suitable for beginners.
+- Easy repository setup through Git.
