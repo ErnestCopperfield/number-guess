@@ -11,3 +11,9 @@ The project is intended to provide a simple number-guessing experience.
 A typical number-guessing project asks the player to find a hidden number by making guesses and receiving feedback after each attempt.
 
 This README provides a clean starting point for understanding, setting up, and working with the repository.
+
+## Project Goals
+
+- Keep the project easy to understand.
+- Provide a simple guessing-game structure.
+- Make the repository approachable for learning and experimentation.
