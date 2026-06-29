@@ -114,3 +114,10 @@ Recommended contribution steps:
 2. Create a new branch for your changes.
 3. Make focused updates.
 4. Test the project if tests or run commands are available.
+5. Submit the changes for review.
+
+## License
+
+No license information is included in the original README.
+
+If a license is added to the repository, document it here.
