@@ -37,3 +37,9 @@ https://github.com/ErnestCopperfield/number-guess.git
 Follow the steps below to get a local copy of the project.
 
 ### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ErnestCopperfield/number-guess.git
+```
+
+### 2. Enter the Project Directory
