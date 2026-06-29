@@ -107,3 +107,10 @@ If the project gains tests, include commands for running them.
 Contributions can be made by improving the code, documentation, or project structure.
 
 Before making changes, review the existing files and keep the project style consistent.
+
+Recommended contribution steps:
+
+1. Clone the repository.
+2. Create a new branch for your changes.
+3. Make focused updates.
+4. Test the project if tests or run commands are available.
