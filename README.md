@@ -55,3 +55,10 @@ After cloning the repository, inspect the files in the project directory to dete
 Depending on the implementation, you may find source files, configuration files, or supporting documentation.
 
 ## Usage
+
+Run the project using the instructions that match the files included in the repository.
+
+For example:
+
+- If the project includes a script file, run it with the appropriate runtime.
+- If the project includes a web page, open the main HTML file in a browser.
