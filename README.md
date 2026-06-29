@@ -24,3 +24,8 @@ This README provides a clean starting point for understanding, setting up, and w
 - Number-guessing project structure.
 - Simple concept suitable for beginners.
 - Easy repository setup through Git.
+- Clear starting point for future development.
+
+## Repository
+
+Repository URL:
