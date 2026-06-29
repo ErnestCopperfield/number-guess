@@ -81,3 +81,9 @@ As the project grows, consider adding:
 ## Possible Game Rules
 
 A basic version of the game may follow these rules:
+
+1. A target number is selected.
+2. The player enters a guess.
+3. The game responds with feedback such as whether the guess is too high or too low.
+4. The player continues guessing until the correct number is found.
+5. The game may display the number of attempts used.
