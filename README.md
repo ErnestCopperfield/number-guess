@@ -69,3 +69,9 @@ If additional run instructions are added to the repository later, place them in 
 ## Suggested README Updates
 
 As the project grows, consider adding:
+
+- The programming language used.
+- Installation requirements.
+- Exact run commands.
+- Screenshots or sample output.
+- Game rules.
