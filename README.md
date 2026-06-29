@@ -95,3 +95,9 @@ These rules can be adjusted to match the actual implementation.
 Keep changes focused and easy to review.
 
 Use clear names for files, functions, and variables.
+
+Document any behavior that may not be obvious from the code.
+
+If the project gains dependencies, include setup instructions in this README.
+
+If the project gains tests, include commands for running them.
